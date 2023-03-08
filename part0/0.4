@@ -1,1 +1,13 @@
 
+sequenceDiagram
+    User->>+Browser: Open https://studies.cs.helsinki.fi/exampleapp/notes
+    Browser->>+Server: GET /notes
+    Server-->>-Browser: List of notes
+    User->>+Browser: Enter note text and click Submit
+    Browser->>+Server: POST /notes {text: "New note text"}
+    Server->>+Database: Create new note
+    Database-->>-Server: New note ID
+    Server-->>-Browser: Redirect to /notes
+    Browser->>+Server: GET /notes
+    Server-->>-Browser: Updated list of notes
+    User->>+Browser: See new note in list
